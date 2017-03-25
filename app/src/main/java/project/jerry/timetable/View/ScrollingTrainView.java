@@ -61,13 +61,7 @@ public class ScrollingTrainView extends LinearLayout {
         jumping.setRepeatCount(-1);
         jumping.setRepeatMode(Animation.REVERSE);
         jumping.setInterpolator(new LinearInterpolator());
-
-
-//        final Animation jumping = AnimationUtils.loadAnimation(mContext, R.anim.jumping);
-//        jumping.setRepeatCount(Animation.INFINITE);
-//        jumping.setRepeatMode(Animation.REVERSE);
         mTrain.startAnimation(jumping);
-        Log.d("animation", "animateTrain: jumping");
     }
 
 }

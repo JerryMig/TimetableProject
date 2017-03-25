@@ -3,6 +3,9 @@ package project.jerry.timetable.Activity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +16,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import project.jerry.timetable.Fragment.MainPagerFragment;
+import project.jerry.timetable.Fragment.TrainTimeTableFragment;
 import project.jerry.timetable.R;
 
 public class MainActivity extends AppCompatActivity
@@ -27,6 +32,7 @@ public class MainActivity extends AppCompatActivity
         initToolbarAndDrawer();
         // initFloatingButton();
         initNavigationView();
+        initTrainTimetable();
     }
 
     private void initToolbarAndDrawer() {
@@ -102,7 +108,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
+            initPagerPage();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
@@ -116,4 +122,22 @@ public class MainActivity extends AppCompatActivity
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void initTrainTimetable() {
+        TrainTimeTableFragment fragment = new TrainTimeTableFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frame_container, fragment);
+        transaction.commit();
+    }
+
+    private void initPagerPage() {
+        MainPagerFragment pagerFragment = new MainPagerFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frame_container, pagerFragment);
+        transaction.commit();
+    }
+
+
 }
