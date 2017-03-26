@@ -8,6 +8,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import project.jerry.timetable.R;
+import project.jerry.timetable.View.BottomButtonView;
 
 /**
  * Created by Migme_Jerry on 2017/3/24.
@@ -26,12 +27,14 @@ public class TrainTimeTableFragment extends BaseFragment {
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         mIndicator = (View) view.findViewById(R.id.indicator_line);
-        animateIndicator();
-        makeSnackBar(view);
+        BottomButtonView bottomButtonView = (BottomButtonView) view.findViewById(R.id.bottom_button);
+        bottomButtonView.startButtonTouchAnimation();
+//        animateIndicator();
+//        makeSnackBar(view);
     }
 
     private void animateIndicator() {
-        Animation anim = AnimationUtils.loadAnimation(mContext, R.anim.slide_in_and_out);
+        Animation anim = AnimationUtils.loadAnimation(mContext, R.anim.slide_in_and_out_from_right);
         anim.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
