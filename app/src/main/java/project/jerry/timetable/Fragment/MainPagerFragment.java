@@ -40,6 +40,7 @@ public class MainPagerFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         mViewPager = (ViewPager) view.findViewById(R.id.pager);
+        mViewPager.setOffscreenPageLimit(2);
         mPagerAdapter = new PagerAdapter();
         mViewPager.setAdapter(mPagerAdapter);
 

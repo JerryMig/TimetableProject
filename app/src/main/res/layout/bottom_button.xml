@@ -24,7 +24,7 @@
         android:layout_width="3dp"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:background="@color/red"
+        android:background="@color/action_bar"
         android:visibility="gone" />
 
     <View
@@ -32,7 +32,7 @@
         android:layout_width="3dp"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
-        android:background="@color/red"
+        android:background="@color/action_bar"
         android:visibility="gone" />
 
     <View
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_alignParentTop="true"
-        android:background="@color/colorAccent"
+        android:background="@color/action_bar"
         android:visibility="gone" />
 
 </RelativeLayout>

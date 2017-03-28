@@ -1,6 +1,7 @@
 package project.jerry.timetable.View;
 
 import android.content.Context;
+import android.support.design.widget.Snackbar;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,7 @@ public class BottomButtonView extends RelativeLayout {
     private Context mContext;
 
     private View mTopLine, mLeftLine, mRightLine, mBottomLine, mIndicator;
+    private Snackbar mSnackbar;
 
     public BottomButtonView(Context context) {
         super(context);
@@ -49,16 +51,18 @@ public class BottomButtonView extends RelativeLayout {
         mIndicator = view.findViewById(R.id.indicator_line);
     }
 
-//    private void setAnimations() {
-//        Animation indicatorAnim =
-//                AnimationUtils.loadAnimation(mContext, R.anim.slide_in_and_out);
-//        mIndicator.setAnimation(indicatorAnim);
-//    }
-
     public void startIndicator() {
         if (mIndicator != null) {
             Animation indicatorAnim =
                     AnimationUtils.loadAnimation(mContext, R.anim.slide_in_and_out_from_right);
+            indicatorAnim.setAnimationListener(new AnimationListenerEx() {
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    if (mSnackbar != null) {
+                        mSnackbar.show();
+                    }
+                }
+            });
             mIndicator.setVisibility(VISIBLE);
             mIndicator.startAnimation(indicatorAnim);
         } else {
@@ -121,5 +125,9 @@ public class BottomButtonView extends RelativeLayout {
             return false;
         }
         return true;
+    }
+
+    public void setSnackbar(Snackbar snackbar) {
+        mSnackbar = snackbar;
     }
 }
