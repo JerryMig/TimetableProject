@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 public abstract class BaseFragment extends Fragment {
 
     protected Context mContext;
+    protected View mRootView;
 
     @Override
     public void onAttach(Context context) {
@@ -25,7 +26,8 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(getLayoutId(), container, false);
+        mRootView = inflater.inflate(getLayoutId(), container, false);
+        return mRootView;
     }
 
     protected abstract int getLayoutId();
