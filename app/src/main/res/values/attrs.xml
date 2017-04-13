@@ -2,7 +2,12 @@
 <resources>
 
     <declare-styleable name="PaletteImageView">
-        <attr name="foreColor" format="color"></attr>
+        <attr name="foreColor" format="color"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="ScrollOptionalViewPager">
+        <attr name="scrollable" format="boolean"/>
     </declare-styleable>
 
 </resources>

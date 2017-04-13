@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="item"
+            type="project.jerry.timetable.Binding.data.MenuItem" />
+
+        <variable
+            name="handler"
+            type="project.jerry.timetable.Binding.handler.MenuEventHandler" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/clickable_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_selection_state"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/menu_item_margin"
+            android:layout_marginRight="@dimen/menu_item_margin"
+            android:text="@{item.itemName}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/menu_text_size"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</layout>

@@ -5,7 +5,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,11 +15,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import project.jerry.timetable.Fragment.BaseFragment;
 import project.jerry.timetable.Fragment.MainPagerFragment;
 import project.jerry.timetable.Fragment.TrainTimeTableFragment;
+import project.jerry.timetable.Handler.ActionHandler;
 import project.jerry.timetable.R;
 
-public class MainActivity extends AppCompatActivity
+public class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout mDrawer;
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
             initPagerPage();
         } else if (id == R.id.nav_slideshow) {
-
+            showMenuPage();
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
@@ -132,12 +133,15 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initPagerPage() {
-        MainPagerFragment pagerFragment = new MainPagerFragment();
+        BaseFragment pagerFragment = new MainPagerFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame_container, pagerFragment);
         transaction.commit();
     }
 
+    private void showMenuPage() {
+        ActionHandler.getInstance().displayFirstPageOfMenu(this);
+    }
 
 }
