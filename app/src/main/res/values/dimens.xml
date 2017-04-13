@@ -14,5 +14,10 @@
 
     <!-- button view-->
     <dimen name="bottom_button_height">50dp</dimen>
+    <dimen name="menu_item_height">40dp</dimen>
+    <dimen name="menu_item_margin">16dp</dimen>
+    <dimen name="menu_text_size">14sp</dimen>
+    <dimen name="menu_footer_height">20dp</dimen>
+    <dimen name="menu_text_margin">10dp</dimen>
 
 </resources>
