@@ -31,7 +31,6 @@ public class MenuFirstPageCardView extends LinearLayout {
     private Context mContext;
 
     private final String[] mStrings = {"Search", "Save / Bookmark", "Reload", "Cool train !"};
-    private final int VIEW_TO_ADJUST = 0;
 
     private List<MenuItem> mDataList;
     private ViewAdapter mAdapter;
