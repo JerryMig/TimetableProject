@@ -1,5 +1,9 @@
 package project.jerry.timetable.Fragment;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
+
 import project.jerry.timetable.R;
 
 /**
@@ -7,8 +11,14 @@ import project.jerry.timetable.R;
  */
 
 public class SubwayTimeTableFragment extends BaseMainPagerFragment {
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_subway_timetable;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+//        addBottomButtonView();
     }
 }

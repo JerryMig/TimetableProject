@@ -1,10 +1,12 @@
 package project.jerry.timetable.Fragment;
 
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import project.jerry.timetable.Handler.ActionHandler;
 import project.jerry.timetable.R;
 import project.jerry.timetable.View.BottomButtonView;
 
@@ -14,17 +16,27 @@ import project.jerry.timetable.View.BottomButtonView;
 
 public abstract class BaseMainPagerFragment extends BaseFragment {
 
+    private final String TAG = "BaseMainPagerFragment";
     protected BottomButtonView mBottomButtonView;
+    private BottomButtonView.ShowMenuListener
+            mShowMenuListener = new BottomButtonView.ShowMenuListener() {
+        @Override
+        public void show() {
+            ActionHandler.getInstance().displayFirstPageOfMenu(getContext());
+        }
+    };
 
     protected abstract int getLayoutId();
 
     protected void addBottomButtonView() {
+        Log.d("TrainTimeTableFragment", "addBottomButtonView");
         if (mRootView != null) {
             makeSnackBar();
             ViewGroup viewGroup = (ViewGroup) mRootView.findViewById(R.id.main_container);
             if (viewGroup != null) {
                 mBottomButtonView = new BottomButtonView(mContext);
                 mBottomButtonView.setSnackbar(makeSnackBar());
+                mBottomButtonView.setShowMenuListener(mShowMenuListener);
                 viewGroup.addView(mBottomButtonView, generateParamsForButton());
                 mBottomButtonView.startIndicator();
             }
