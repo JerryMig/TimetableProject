@@ -29,7 +29,7 @@ public abstract class BaseMainPagerFragment extends BaseFragment {
     protected abstract int getLayoutId();
 
     protected void addBottomButtonView() {
-        Log.d("TrainTimeTableFragment", "addBottomButtonView");
+        Log.d(TAG, "addBottomButtonView");
         if (mRootView != null) {
             makeSnackBar();
             ViewGroup viewGroup = (ViewGroup) mRootView.findViewById(R.id.main_container);

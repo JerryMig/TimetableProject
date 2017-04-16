@@ -2,18 +2,16 @@ package project.jerry.timetable.View;
 
 import android.content.Context;
 import android.databinding.ViewDataBinding;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import project.jerry.timetable.Adapter.BaseRecyclerViewAdapter;
 import project.jerry.timetable.Binding.data.MenuItem;
@@ -22,44 +20,45 @@ import project.jerry.timetable.R;
 import project.jerry.timetable.Util.RecyclerViewDividerDecoration;
 
 /**
- * Created by Migme_Jerry on 2017/4/12.
+ * Created by Migme_Jerry on 2017/4/15.
  */
 
-public class MenuFirstPageCardView extends BaseMenuCardView {
+public class MenuSecondPageCardView extends BaseMenuCardView {
 
-    private final String TAG = "MenuFirstPageCardView";
+    private final String TAG = "MenuSecondPageCardView";
 
-    private List<MenuItem> mDataList;
-    private ViewAdapter mAdapter;
+    private ArrayList<MenuItem> mDataList;
     private RecyclerView mRecyclerView;
+    private ViewAdapter mAdapter;
 
-    public MenuFirstPageCardView(Context context) {
+    public MenuSecondPageCardView(Context context) {
         super(context);
     }
 
-    public MenuFirstPageCardView(Context context, AttributeSet attrs) {
+    public MenuSecondPageCardView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public MenuFirstPageCardView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MenuSecondPageCardView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @Override
     protected void addContentView() {
-        mAdapter = new ViewAdapter();
         mRecyclerView = new RecyclerView(mContext);
+        mAdapter = new ViewAdapter();
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        mRecyclerView.addItemDecoration(new RecyclerViewDividerDecoration(mContext));
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.addItemDecoration(new RecyclerViewDividerDecoration(mContext));
 
         // Add view to card view
         mCardView.addView(mRecyclerView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 
+    @Override
     protected void initData() {
-        mDataList = MenuItemDatastore.getInstance().getPageData(MenuItemDatastore.FIRST_CARD);
+        mDataList = MenuItemDatastore.getInstance().getPageData(MenuItemDatastore.SECOND_CARD);
     }
 
     private class ViewAdapter extends BaseRecyclerViewAdapter {
@@ -74,7 +73,7 @@ public class MenuFirstPageCardView extends BaseMenuCardView {
 
         @Override
         protected int getLayoutIdForPosition(int position) {
-            return R.layout.view_menu_item;
+            return R.layout.view_menu_second_item;
         }
 
         @Override
@@ -98,11 +97,11 @@ public class MenuFirstPageCardView extends BaseMenuCardView {
                 if (binding != null) {
                     View view = binding.getRoot();
                     /** Setting margin and padding for better looks **/
-                    LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.clickable_linear);
+                    RelativeLayout relativeLayout = (RelativeLayout) view.findViewById(R.id.clickable_linear);
                     int marginTop = (int) getResources().getDimension(R.dimen.menu_item_height);
                     int padding = (int) getResources().getDimension(R.dimen.menu_text_margin);
                     RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(1000, marginTop);
-                    linearLayout.setLayoutParams(params);
+                    relativeLayout.setLayoutParams(params);
                     view.setPadding(0, padding, 0, 0);
                 }
             }

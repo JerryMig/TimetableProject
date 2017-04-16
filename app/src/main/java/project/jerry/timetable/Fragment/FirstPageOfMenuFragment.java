@@ -18,9 +18,6 @@ import project.jerry.timetable.View.RecyclerViewHolder;
 public class FirstPageOfMenuFragment extends BaseRecyclerViewFragment {
 
     private final String TAG = "FirstPageOfMenuFragment";
-    private final int VIEW_POSITION_HEADER = 0;
-    private final int VIEW_POSITION_CONTENT = 1;
-    private final int VIEW_POSITION_FOOTER = 2;
     private final Object[] ITEM_OTHER_COUNT = {VIEW_POSITION_HEADER, VIEW_POSITION_CONTENT ,VIEW_POSITION_FOOTER};
 
     private FirstPagerRecyclerViewAdapter mAdapter;

@@ -15,6 +15,10 @@ import project.jerry.timetable.R;
 
 public abstract class BaseRecyclerViewFragment extends BaseFragment {
 
+    protected final int VIEW_POSITION_HEADER = 0;
+    protected final int VIEW_POSITION_CONTENT = 1;
+    protected final int VIEW_POSITION_FOOTER = 2;
+
     private RecyclerView mRecyclerView;
 
     @Override
