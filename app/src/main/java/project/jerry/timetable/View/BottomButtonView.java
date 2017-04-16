@@ -123,6 +123,7 @@ public class BottomButtonView extends RelativeLayout {
         isBottomAnimationStarted = true;
         startBottomLine();
         startLeftLine();
+//        startRightLine();
     }
 
     // Called when isMenuNeeded is false due to a short click event
@@ -188,6 +189,8 @@ public class BottomButtonView extends RelativeLayout {
      * ********************************
      */
 
+    private Animation animation;
+
     private void startTopLine() {
         if (ensureView(mTopLine)) {
             Animation top = AnimationUtils.loadAnimation(mContext, R.anim.slide_right);
@@ -205,7 +208,7 @@ public class BottomButtonView extends RelativeLayout {
     private void startRightLine() {
         if (ensureView(mRightLine)) {
             Log.d(TAG, "startRightLine");
-            Animation right = AnimationUtils.loadAnimation(mContext, R.anim.slide_up_left);
+            Animation right = AnimationUtils.loadAnimation(mContext, R.anim.slide_up_right);
             mRightLine.setVisibility(VISIBLE);
             mRightLine.startAnimation(right);
         }

@@ -8,13 +8,15 @@ import android.util.Log;
 
 import project.jerry.timetable.Fragment.BaseFragment;
 import project.jerry.timetable.Fragment.FirstPageOfMenuFragment;
+import project.jerry.timetable.Fragment.MenuPagerFragment;
+import project.jerry.timetable.Fragment.SecondPageOfMenuFragment;
 import project.jerry.timetable.R;
 
 /**
  * Created by Migme_Jerry on 2017/4/11.
  */
 
-public class PopupTranslucentActivity extends AppCompatActivity {
+public class PopupTranslucentActivity extends BaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,8 +26,7 @@ public class PopupTranslucentActivity extends AppCompatActivity {
     }
 
     private void initFragmentPage() {
-        Log.d("popupActivity", "Data ensurance failed !");
-        BaseFragment pagerFragment = new FirstPageOfMenuFragment();
+        BaseFragment pagerFragment = new MenuPagerFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 //        transaction.setCustomAnimations(R.anim.slide_in_top, R.anim.slide_out_top);

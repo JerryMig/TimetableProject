@@ -16,7 +16,6 @@ import project.jerry.timetable.Fragment.FirstPageOfMenuFragment;
 public class ActionHandler {
 
     private static ActionHandler sInstance;
-
     private static final String TAG = "ActionHandler";
 
     public static ActionHandler getInstance() {

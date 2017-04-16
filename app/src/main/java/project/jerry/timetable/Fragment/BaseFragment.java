@@ -1,12 +1,18 @@
 package project.jerry.timetable.Fragment;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import project.jerry.timetable.Activity.BaseActivity;
 
 /**
  * Created by Migme_Jerry on 2017/3/24.
@@ -14,8 +20,56 @@ import android.view.ViewGroup;
 
 public abstract class BaseFragment extends Fragment {
 
+    private FragmentReceiver mReceiver;
     protected Context mContext;
     protected View mRootView;
+
+    public class FragmentReceiver extends BroadcastReceiver {
+
+        public void onReceive(Context context, Intent intent) {
+            BaseFragment.this.onReceive(context, intent);
+        }
+    }
+
+    protected void onReceive(Context context, Intent intent) {
+
+    }
+
+    protected void registerEvent(String event) {
+        if (mReceiver == null) {
+            mReceiver = new FragmentReceiver();
+        }
+
+        BaseActivity activity = (BaseActivity) getActivity();
+        if (activity != null) {
+            LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(activity);
+            localBroadcastManager.registerReceiver(mReceiver, new IntentFilter(event));
+        }
+    }
+
+    protected void unregisterReceiver() {
+        BaseActivity activity = (BaseActivity) getActivity();
+        if (activity != null && mReceiver != null) {
+            LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(activity);
+            localBroadcastManager.unregisterReceiver(mReceiver);
+        }
+    }
+
+    protected void registerReceivers() {
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterReceiver();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        registerReceivers();
+    }
 
     @Override
     public void onAttach(Context context) {

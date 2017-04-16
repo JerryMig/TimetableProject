@@ -11,24 +11,31 @@
             type="project.jerry.timetable.Binding.handler.MenuEventHandler" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/clickable_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_selection_state"
         android:clickable="true"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/menu_item_margin"
             android:layout_marginRight="@dimen/menu_item_margin"
-            android:text="@{item.itemName}"
-            android:onClick="@{() -> handler.onItemClick(item)}"
+            android:text="@{item.itemName + ' ' + ':'}"
             android:textColor="@color/black"
             android:textSize="@dimen/menu_text_size"
             android:textStyle="bold" />
-    </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/menu_item_margin"
+            android:text="123"/>
+
+    </RelativeLayout>
 
 </layout>
