@@ -8,6 +8,7 @@ public class MenuItem {
 
     private String mItemName;
     private boolean mHasNextPage;
+    private boolean mHasPrePage;
 
     public MenuItem(String name, boolean nextPage) {
         mItemName = name;
@@ -25,6 +26,14 @@ public class MenuItem {
 
     public boolean hasNextPage() {
         return mHasNextPage;
+    }
+
+    public void setHasPrePage(boolean hasPrePage) {
+        mHasPrePage = hasPrePage;
+    }
+
+    public boolean hasPrePage() {
+        return mHasPrePage;
     }
 
     public String getItemName() {

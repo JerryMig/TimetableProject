@@ -17,6 +17,8 @@ import java.util.List;
 
 import project.jerry.timetable.Adapter.BaseRecyclerViewAdapter;
 import project.jerry.timetable.Binding.data.MenuItem;
+import project.jerry.timetable.Binding.handler.BaseEventHandler;
+import project.jerry.timetable.Binding.handler.MenuEventHandler;
 import project.jerry.timetable.Datastore.MenuItemDatastore;
 import project.jerry.timetable.R;
 import project.jerry.timetable.Util.RecyclerViewDividerDecoration;
@@ -70,6 +72,11 @@ public class MenuFirstPageCardView extends BaseMenuCardView {
                 return mDataList.get(position);
             }
             return null;
+        }
+
+        @Override
+        protected BaseEventHandler getHandler() {
+            return new MenuEventHandler(mContext);
         }
 
         @Override

@@ -3,10 +3,10 @@ package project.jerry.timetable.Adapter;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import project.jerry.timetable.Binding.handler.BaseEventHandler;
 import project.jerry.timetable.View.RecyclerViewHolder;
 
 /**
@@ -24,8 +24,14 @@ public abstract class BaseRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+        // Bind object to view
         Object object = getObjectForPosition(position);
-        holder.bind(object);
+        holder.bindObject(object);
+
+        // Bind handler to view
+        BaseEventHandler handler = getHandler();
+        holder.bindHandler(handler);
+
         viewHolderForPosition(holder, position);
     }
 
@@ -40,10 +46,13 @@ public abstract class BaseRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
     }
 
     protected void viewHolderForPosition(RecyclerViewHolder holder, int position) {
-
     }
 
     protected abstract Object getObjectForPosition(int position);
+
+    protected BaseEventHandler getHandler() {
+        return null;
+    }
 
     protected abstract int getLayoutIdForPosition(int position);
 

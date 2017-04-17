@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_selection_state"
+        android:onClick="@{() -> handler.onItemClick(item)}"
         android:clickable="true"
         android:orientation="vertical">
 
@@ -25,7 +26,6 @@
             android:layout_marginLeft="@dimen/menu_item_margin"
             android:layout_marginRight="@dimen/menu_item_margin"
             android:text="@{item.itemName}"
-            android:onClick="@{() -> handler.onItemClick(item)}"
             android:textColor="@color/black"
             android:textSize="@dimen/menu_text_size"
             android:textStyle="bold" />

@@ -6,6 +6,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -56,35 +57,53 @@ public class SecondPageOfMenuFragment extends BaseRecyclerViewFragment {
 
         @Override
         protected void viewHolderForPosition(RecyclerViewHolder holder, int position) {
-            if (position == VIEW_POSITION_FOOTER) {
-                View view = holder.getBinding().getRoot();
-                if (view != null) {
-                    CardView cardBack = (CardView) view.findViewById(R.id.card_back);
-                    CardView cardSwitch = (CardView) view.findViewById(R.id.card_switch);
-                    CardView cardSearch = (CardView) view.findViewById(R.id.card_search);
-
-                    int height = (int) getResources().getDimension(R.dimen.menu_item_height);
-                    Display display = getActivity().getWindowManager().getDefaultDisplay();
-                    Point point = new Point();
-                    display.getSize(point);
-                    int width = point.x;
-
-                    int paddingInBetween = (int) getResources().getDimension(R.dimen.menu_footer_padding);
-                    int widthEach = (width / 3) - (int)(paddingInBetween * 2.5);
-
-                    LinearLayout.LayoutParams paramsBack = new LinearLayout.LayoutParams(widthEach, height);
-                    paramsBack.rightMargin = paddingInBetween;
-                    cardBack.setLayoutParams(paramsBack);
-
-                    LinearLayout.LayoutParams paramsSwitch = new LinearLayout.LayoutParams(widthEach, height);
-                    cardSwitch.setLayoutParams(paramsSwitch);
-
-                    LinearLayout.LayoutParams paramsSearch = new LinearLayout.LayoutParams(widthEach, height);
-                    paramsSearch.leftMargin = paddingInBetween;
-                    cardSearch.setLayoutParams(paramsSearch);
-                }
+            View view = holder.getBinding().getRoot();
+            switch (position) {
+                case VIEW_POSITION_HEADER:
+                    adjustHeaderView(view);
+                    break;
+                case VIEW_POSITION_FOOTER:
+                    adjustFooterView(view);
+                    break;
             }
         }
+
+        private void adjustHeaderView(View view) {
+            if (view != null) {
+                View header = view.findViewById(R.id.header_view);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 400);
+                header.setLayoutParams(params);
+            }
+        }
+
+        private void adjustFooterView(View view) {
+            if (view != null) {
+                CardView cardBack = (CardView) view.findViewById(R.id.card_back);
+                CardView cardSwitch = (CardView) view.findViewById(R.id.card_switch);
+                CardView cardSearch = (CardView) view.findViewById(R.id.card_search);
+
+                int height = (int) getResources().getDimension(R.dimen.menu_item_height);
+                Display display = getActivity().getWindowManager().getDefaultDisplay();
+                Point point = new Point();
+                display.getSize(point);
+                int width = point.x;
+
+                int paddingInBetween = (int) getResources().getDimension(R.dimen.menu_footer_padding);
+                int widthEach = (width / 3) - (int)(paddingInBetween * 2.5);
+
+                LinearLayout.LayoutParams paramsBack = new LinearLayout.LayoutParams(widthEach, height);
+                paramsBack.rightMargin = paddingInBetween;
+                cardBack.setLayoutParams(paramsBack);
+
+                LinearLayout.LayoutParams paramsSwitch = new LinearLayout.LayoutParams(widthEach, height);
+                cardSwitch.setLayoutParams(paramsSwitch);
+
+                LinearLayout.LayoutParams paramsSearch = new LinearLayout.LayoutParams(widthEach, height);
+                paramsSearch.leftMargin = paddingInBetween;
+                cardSearch.setLayoutParams(paramsSearch);
+            }
+        }
+
     }
 
 }
